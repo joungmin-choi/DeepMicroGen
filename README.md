@@ -33,8 +33,8 @@ Subject3,1,1,0
 ...
 ```
 ## Generating the imputed values for missing samples
-1. Run **./run_DeepMicroGen.sh** to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed above in this file.
-2. You can get the final output **imputed_dataset_from_DeepMicroGen.csv**.
+1. Run **'./run_DeepMicroGen.sh'** to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed above in this file.
+2. You can get the final output **'imputed_dataset_from_DeepMicroGen.csv'**.
 
 ## Contact
 If you have any questions or problems, please contact to **joungmin At vt.edu**.
