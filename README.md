@@ -12,7 +12,7 @@ DeepMicroGen is a deep generative method for longitudinal microbiome data imputa
 Clone the repository or download source code files.
 
 ## Inputs
-1. Longituindal microbiome species-level relative abundance profiles
+### 1. Longituindal microbiome species-level relative abundance profiles
 Prepare or edit **"longitudinal_microbiomd_data.csv"** file having a matrix of center-log transforemd species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. For the order of rows, the samples of each subject should be arranged in the increasing order of timepoints (tp) :
 
 ```
@@ -23,7 +23,7 @@ OTU3,0.00018,0.00024,0.02024,0.01011...,0.000029
 ...
 ```
 
-2. Mask matrix 
+### 2. Mask matrix 
 Prepare or edit **"mask.csv"** file indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow this format :
 ```
 SubjectName,tp1,tp2,tp3
