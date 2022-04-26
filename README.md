@@ -37,5 +37,5 @@ Subject3,1,1,0
 2. You can get the final output **'imputed_dataset_from_DeepMicroGen.csv'**.
 
 ## Contact
-If you have any questions or problems, please contact to **joungmin At vt.edu**.
+If you have any questions or problems, please contact to **joungmin AT vt.edu**.
 
