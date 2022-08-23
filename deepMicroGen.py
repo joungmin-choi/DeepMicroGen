@@ -172,11 +172,7 @@ def build_discriminator(X, _phase) :
 	lstm = tf.keras.layers.LSTM(10, return_sequences = True)(X)
 	sm_out = tf.nn.softmax(fc_bn(lstm, num_timepoint, _phase, "logits_label"))
 	output_lstm2 = tf.keras.layers.TimeDistributed(tf.keras.layers.Dense(2))(lstm)
-	logits = fc_bn(output_lstm2, 2, _phase, "logits")
-	#fc1 = tf.nn.leaky_relu(fc_bn(X, 16, _phase, "discriminator_fc1"))
-	#fc2 = tf.nn.leaky_relu(fc_bn(fc1, 16, _phase, "discriminator_fc2"))
-	#logits = fc_bn(fc1, 1, _phase, "logits")
-	#logits = tf.layers.flatten(X)
+	logits = fc_bn(output_lstm2, 1, _phase, "logits")
 	predicted_value = tf.nn.sigmoid(logits)
 	return predicted_value, logits, sm_out 
 
