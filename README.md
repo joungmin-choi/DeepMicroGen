@@ -8,6 +8,13 @@ DeepMicroGen is a deep generative method for longitudinal microbiome data imputa
 * Python (>= 2.7)
 * Python packages : numpy, pandas, os, sys
 
+### Installation
+```
+pip install tensorflow==1.8.0 # For CPU
+pip install tensorflow-gpu==1.8.0 # For GPU
+pip install numpy pandas os sys
+```
+
 ## Usage
 Clone the repository or download source code files.
 
