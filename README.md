@@ -20,7 +20,9 @@ Clone the repository or download source code files.
 
 ## Inputs
 ### 1. Longituindal microbiome species-level relative abundance profiles
-Prepare or edit **"longitudinal_microbiomd_data.csv"** file having a matrix of center-log transforemd species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. For the order of rows, the samples of each subject should be arranged in the increasing order of timepoints (tp) :
+Prepare or edit **"relative_abundance_data.csv"** file having a matrix of species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. OTU should be in the format of **'kingdom|phylum|class|order|familiy|Genus|Species'** (e.g. *k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_matruchotii*)
+
+For the order of rows, the samples of each subject should be arranged in the increasing order of timepoints (tp) :
 
 ```
 OTU,subject1_tp1,subject1_tp2,subject1_tp3,subject2_tp1...,subjectn_tp3
@@ -28,6 +30,11 @@ OTU1,0.00057,0.00034,0.00021,0.00012...,0.000023
 OTU2,1.23337,1.00214,1.03028,2.02034...,1.003043
 OTU3,0.00018,0.00024,0.02024,0.01011...,0.000029
 ...
+```
+For the outputs from Kraken2 and MetaPhlAn3, we provide a module to transform those to the species-level relative abundance profiles for DeepMicroGen.
+If you have are using the outputs from Kraken2, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command.
+```
+python3 prepare_species_RA.py kraken
 ```
 
 ### 2. Mask matrix 
@@ -39,6 +46,10 @@ Subject2,1,0,1
 Subject3,1,1,0
 ...
 ```
+
+## Preprocessing
+1. 
+
 ## Generating the imputed values for missing samples
 1. Run **'./run_DeepMicroGen.sh'** to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed above in this file.
 2. You can get the final output **'imputed_dataset_from_DeepMicroGen.csv'**.
