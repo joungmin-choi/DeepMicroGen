@@ -45,7 +45,7 @@ python3 prepare_species_RA.py metaphlan outputFileName
 ```
 
 ### 2. Mask matrix 
-Prepare or edit **"mask.csv"** file indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow this format :
+Prepare or edit **"mask.csv"** file indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow the below format, where the timepoints (tp1,tp2,tp3...) should be written in the integer or the float format :
 ```
 SubjectName,tp1,tp2,tp3
 Subject1,1,1,1
