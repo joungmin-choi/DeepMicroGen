@@ -1,0 +1,17 @@
+clade_name,SRS014494-Posterior_fornix_profile,SRS014476-Supragingival_plaque_profile,SRS014472-Buccal_mucosa_profile,SRS014470-Tongue_dorsum_profile,SRS014464-Anterior_nares_profile,SRS014459-Stool_profile
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_matruchotii,0.0,0.6525681,0.0,0.0,0.0,0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Micrococcales|f__Micrococcaceae|g__Rothia|s__Rothia_dentocariosa,0.0,0.34743190000000007,0.0,0.0,0.0,0.0
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_stercoris,0.0,0.0,0.0,0.0,0.0,0.3162003
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_histicola,0.0,0.0,0.0,0.5136480999999999,0.0,0.0
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_pallens,0.0,0.0,0.0,0.0510895,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_unclassified|g__Gemella|s__Gemella_haemolysans,0.0,0.0,0.1917145,0.0,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Carnobacteriaceae|g__Dolosigranulum|s__Dolosigranulum_pigrum,0.0,0.0,0.0,0.0,0.027635100000000003,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lactobacillus|s__Lactobacillus_crispatus,0.8056118000000001,0.0,0.0,0.0,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Lactobacillaceae|g__Lactobacillus|s__Lactobacillus_iners,0.1943882,0.0,0.0,0.0,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_mitis,0.0,0.0,0.7951796999999999,0.0,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_parasanguinis,0.0,0.0,0.0,0.0298391,0.0,0.0
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Lachnospiraceae|g__Lachnospiraceae_unclassified|s__Eubacterium_rectale,0.0,0.0,0.0,0.0,0.0,0.1356219
+k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Faecalibacterium|s__Faecalibacterium_prausnitzii,0.0,0.0,0.0,0.0,0.0,0.5481779
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Veillonellales|f__Veillonellaceae|g__Veillonella|s__Veillonella_dispar,0.0,0.0,0.0,0.4054233,0.0,0.0
+k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pasteurellales|f__Pasteurellaceae|g__Haemophilus|s__Haemophilus_haemolyticus,0.0,0.0,0.0131058,0.0,0.0,0.0
+k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Moraxellaceae|g__Moraxella|s__Moraxella_nonliquefaciens,0.0,0.0,0.0,0.0,0.9723649000000001,0.0
