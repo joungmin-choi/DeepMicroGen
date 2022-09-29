@@ -9,6 +9,7 @@ DeepMicroGen is a deep generative method for longitudinal microbiome data imputa
 * Python packages : numpy, pandas, os, sys
 
 ### Installation
+To install the above requirments, please run below commands in the terminal :
 ```
 pip install tensorflow==1.8.0 # For CPU
 pip install tensorflow-gpu==1.8.0 # For GPU
@@ -32,9 +33,15 @@ OTU3,0.00018,0.00024,0.02024,0.01011...,0.000029
 ...
 ```
 For the outputs from Kraken2 and MetaPhlAn3, we provide a module to transform those to the species-level relative abundance profiles for DeepMicroGen.
-If you have are using the outputs from Kraken2, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command.
+
+If you have the outputs from Kraken2, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command :
 ```
 python3 prepare_species_RA.py kraken
+```
+
+If you have the outputs from MetaPhlAn, please merge all the metphlan outpus in to one talbe, using **merge_metaphlan_tables.py** in MetaPhlAn package, and use that output. Replace "outputFileName" as your output file name and run the below command : 
+```
+python3 prepare_species_RA.py metaphlan outputFileName
 ```
 
 ### 2. Mask matrix 
@@ -48,10 +55,15 @@ Subject3,1,1,0
 ```
 
 ## Preprocessing
-1. 
+If you already prepared the clr-transformed dataset, you can skip the preprocessing step. 
+Otherwise, to perform centered log ratio transformation, prepare the inputs mentioned above and run the below command :
+```
+python3 clr_transformation.py
+```
 
 ## Generating the imputed values for missing samples
 1. Run **'./run_DeepMicroGen.sh'** to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed above in this file.
+
 2. You can get the final output **'imputed_dataset_from_DeepMicroGen.csv'**.
 
 ## Contact
