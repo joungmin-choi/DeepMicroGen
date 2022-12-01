@@ -1,11 +1,9 @@
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-from pandas import DataFrame as df
 import os
 import sys
 from tensorflow.contrib.layers.python.layers import batch_norm as batch_norm
-from sklearn.model_selection import train_test_split
 
 tf.reset_default_graph()
 
@@ -22,6 +20,10 @@ def fc_bn(_x, _output, _phase, _scope):
 		h1 = tf.contrib.layers.fully_connected(_x, _output, activation_fn=None, scope='dense', weights_initializer=tf.contrib.layers.variance_scaling_initializer(), weights_regularizer = tf.contrib.layers.l2_regularizer(0.01), reuse=tf.AUTO_REUSE)
 		h2 = tf.contrib.layers.batch_norm(h1, updates_collections=None, fused=True, decay=0.9, center=True, scale=True, is_training=_phase, scope='bn', reuse=tf.AUTO_REUSE)
 		return h2
+
+def softmax(x) :
+	e_x = np.exp(x - np.max(x))
+	return e_x / e_x.sum()
 
 profiles_filename = sys.argv[1]
 mask_filename = sys.argv[2]
@@ -51,6 +53,7 @@ for i in range(len(mask_data)) :
 
 time_df = pd.DataFrame({'month' : time_list})
 time_label_input = pd.get_dummies(time_df['month'])
+timelist = time_label_input.columns.astype('float').tolist()
 time_label = time_label_input.values
 time_label = time_label.reshape(-1, num_timepoint, num_timepoint)
 
@@ -71,6 +74,7 @@ for i in range(cluster_num) :
 mask_data_tmp = mask_data.T # Row: timepoint, Column: sample
 mask_data_tmp.reset_index(inplace = True, drop = True)
 sample_list = mask_data_tmp.columns.tolist()
+mask_data_tmp['time'] = timelist
 
 dict_timedecay_f = {}
 dict_timedecay_b = {}
@@ -86,10 +90,10 @@ for sample in sample_list :
 			dict_timedecay_f[sample].append(0)
 		else :
 			if mask_data_tmp[sample][time-1] == 1 :
-				dict_timedecay_f[sample].append(1)
-				tmp = 1
+				tmp = mask_data_tmp['time'][time] - mask_data_tmp['time'][time-1]
+				dict_timedecay_f[sample].append(tmp)
 			else :
-				tmp += 1
+				tmp += mask_data_tmp['time'][time] - mask_data_tmp['time'][time-1]
 				dict_timedecay_f[sample].append(tmp)
 
 
@@ -100,10 +104,10 @@ for sample in sample_list :
 			dict_timedecay_b[sample].append(0)
 		else :
 			if mask_data_tmp[sample][time+1] == 1 :
-				dict_timedecay_b[sample].append(1)
-				tmp = 1
+				tmp = abs(mask_data_tmp['time'][time] - mask_data_tmp['time'][time+1])
+				dict_timedecay_b[sample].append(tmp)
 			else :
-				tmp += 1
+				tmp += abs(mask_data_tmp['time'][time] - mask_data_tmp['time'][time+1])
 				dict_timedecay_b[sample].append(tmp)
 
 dict_timedecay_f = pd.DataFrame(dict_timedecay_f)
@@ -244,4 +248,12 @@ with tf.Session() as sess:
 	imputed_dataset_reshape_df.columns = x_data.columns
 	imputed_dataset_reshape_df.index = x_data.index 
 	imputed_dataset_reshape_df = imputed_dataset_reshape_df.T 
-	imputed_dataset_reshape_df.to_csv("imputed_dataset_from_DeepMicroGen.csv", mode = "w", index = True)
+	imputed_dataset_reshape_df.to_csv("imputed_dataset_from_DeepMicroGen_clr.csv", mode = "w", index = True)
+	imputed_dataset_reshape_df_scaled = softmax(imputed_dataset_reshape_df)
+	sample_list = imputed_dataset_reshape_df_scaled.columns
+	for sample in sample_list :
+		for j in range(len(imputed_dataset_reshape_df_scaled)) :
+			if imputed_dataset_reshape_df_scaled[sample][j] < 1e-5 :
+				imputed_dataset_reshape_df_scaled[sample][j] = 0
+	imputed_dataset_reshape_df_scaled.index = imputed_dataset_reshape_df.index
+	imputed_dataset_reshape_df_scaled.to_csv("imputed_dataset_from_DeepMicroGen_scaled.csv", mode = "w", index = True)

@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 from skbio.stats. composition import clr
 
-data = pd.read_csv("relative_abundance_output.csv", index_col = 0)
+data = pd.read_csv("relative_abundance_data.csv", index_col = 0)
 data.reset_index(inplace = True, drop = False)
 
 pseudo_count_list = {}
@@ -14,6 +14,7 @@ for sample in sample_list :
 	for i in range(len(data)) :
 		if (tmp_min > data[sample][i]) and (data[sample][i] != 0.0) :
 			tmp_min = data[sample][i] 
+		print(i)
 	pseudo_count = tmp_min/2
 	pseudo_count_list[sample] = pseudo_count 
 
