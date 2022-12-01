@@ -20,8 +20,9 @@ pip install numpy pandas os sys
 Clone the repository or download source code files.
 
 ## Inputs
-### 1. Longituindal microbiome species-level relative abundance profiles
-Prepare or edit **"relative_abundance_data.csv"** file having a matrix of species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. OTU should be in the format of **'kingdom|phylum|class|order|familiy|Genus|Species'** (e.g. *k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_matruchotii*)
+#### 1) Longituindal microbiome species-level relative abundance profiles
+Prepare or edit **"relative_abundance_data.csv"** file having a matrix of species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. OTU should be in the format of **'kingdom|phylum|class|order|familiy|Genus|Species'** 
+(e.g. *k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_matruchotii*)
 
 For the order of rows, the samples of each subject should be arranged in the increasing order of timepoints (tp) :
 
@@ -34,17 +35,17 @@ OTU3,0.00018,0.00024,0.02024,0.01011...,0.000029
 ```
 For the outputs from Kraken2 and MetaPhlAn3, we provide a module to transform those to the species-level relative abundance profiles for DeepMicroGen. You can use those modules in **"prepare_species_RA"** directory.
 
-If you have the outputs from Kraken2, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command :
+* If you have the outputs from ***Kraken2***, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command :
 ```
 python3 prepare_species_RA.py kraken
 ```
 
-If you have the outputs from MetaPhlAn, please merge all the metphlan outpus in to one talbe, using **merge_metaphlan_tables.py** in MetaPhlAn package, and use that output. Replace "outputFileName" as your output file name and run the below command : 
+* If you have the outputs from ***MetaPhlAn3***, please merge all the metphlan outpus in to one talbe, using **merge_metaphlan_tables.py** in MetaPhlAn package, and use that output. Replace "outputFileName" as your output file name and run the below command : 
 ```
 python3 prepare_species_RA.py metaphlan outputFileName
 ```
 
-### 2. Mask matrix 
+#### 2) Mask matrix 
 Prepare or edit **"mask.csv"** file indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow the below format, where the timepoints (tp1,tp2,tp3...) should be written in the integer or the float format :
 ```
 SubjectName,tp1,tp2,tp3
@@ -55,8 +56,8 @@ Subject3,1,1,0
 ```
 
 ## Preprocessing
-If you already prepared the clr-transformed dataset, you can skip the preprocessing step. 
-Otherwise, to perform centered log ratio transformation, prepare the inputs mentioned above and run the below command :
+If you already prepared the centered log ratio (clr)-transformed dataset, you can skip the preprocessing step. 
+Otherwise, to perform clr transformation, prepare the inputs mentioned above and run the below command :
 ```
 python3 clr_transformation.py
 ```
@@ -70,6 +71,9 @@ Run the below command to generate the imputed values for missing samples. You ca
 After training, you will get two final imputation outputs:  
 **1) imputed_dataset_from_DeepMicroGen.csv** (clr-transformed format)  
 **2) imputed_dataset_from_DeepMicroGen_scaled.csv** (relative abundance profiles where the sum of the abundance values in all OTUs equals to 1).
+
+## Allergy classification ##
+We uploaded the orginial clr-transformed species-level relative abundance profiles for DIABIMMUNE dataset and the imputation output from DeepMicroGen used for allergy prediction improvement in **"allergy_classification"** directory. For each subject, the profiles measured for 8 timepoints are aligned. The lstm-based allergy classifier used to predict the allergy in the expereiment was also uploaded.
 
 ## Contact
 If you have any questions or problems, please contact to **joungmin AT vt.edu**.
