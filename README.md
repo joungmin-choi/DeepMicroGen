@@ -32,7 +32,7 @@ OTU2,1.23337,1.00214,1.03028,2.02034...,1.003043
 OTU3,0.00018,0.00024,0.02024,0.01011...,0.000029
 ...
 ```
-For the outputs from Kraken2 and MetaPhlAn3, we provide a module to transform those to the species-level relative abundance profiles for DeepMicroGen.
+For the outputs from Kraken2 and MetaPhlAn3, we provide a module to transform those to the species-level relative abundance profiles for DeepMicroGen. You can use those modules in **"prepare_species_RA"** directory.
 
 If you have the outputs from Kraken2, please edit **"dataset_list.txt"** file having the list of the output filenames, and run the below command :
 ```
@@ -62,9 +62,14 @@ python3 clr_transformation.py
 ```
 
 ## Generating the imputed values for missing samples
-1. Run **'./run_DeepMicroGen.sh'** to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed above in this file.
+Run the below command to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed in **"run_DeepMicroGen.sh"** file.
+```
+./run_DeepMicroGen.sh
+```
 
-2. You can get the final output **'imputed_dataset_from_DeepMicroGen.csv'**.
+After training, you will get two final imputation outputs:  
+**1) imputed_dataset_from_DeepMicroGen.csv** (clr-transformed format)  
+**2) imputed_dataset_from_DeepMicroGen_scaled.csv** (relative abundance profiles where the sum of the abundance values in all OTUs equals to 1).
 
 ## Contact
 If you have any questions or problems, please contact to **joungmin AT vt.edu**.
