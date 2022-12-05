@@ -21,7 +21,7 @@ Clone the repository or download source code files.
 
 ## Inputs
 #### 1) Longituindal microbiome species-level relative abundance profiles
-Prepare or edit **"relative_abundance_data.csv"** file having a matrix of species relative abundance profiles, where each row and column represent OTU and sample ID, respectively. OTU should be in the format of **'kingdom|phylum|class|order|familiy|Genus|Species'** 
+Prepare or edit **"relative_abundance_data.csv"** file having a matrix of species relative abundance profiles in **DeepMicroGen** directory, where each row and column represent OTU and sample ID, respectively. OTU should be in the format of **'kingdom|phylum|class|order|familiy|Genus|Species'** 
 (e.g. *k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_matruchotii*)
 
 For the order of rows, the samples of each subject should be arranged in the increasing order of timepoints (tp) :
@@ -46,7 +46,7 @@ python3 prepare_species_RA.py metaphlan outputFileName
 ```
 
 #### 2) Mask matrix 
-Prepare or edit **"mask.csv"** file indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow the below format, where the timepoints (tp1,tp2,tp3...) should be written in the integer or the float format :
+Prepare or edit **"mask.csv"** file in **DeepMicroGen** directory, indiciating whether each sampe is missing or not. Subject should be in a same order with the above profile dataset. The file should follow the below format, where the timepoints (tp1,tp2,tp3...) should be written in the integer or the float format :
 ```
 SubjectName,tp1,tp2,tp3
 Subject1,1,1,1
@@ -55,15 +55,8 @@ Subject3,1,1,0
 ...
 ```
 
-## Preprocessing
-If you already prepared the centered log ratio (clr)-transformed dataset, you can skip the preprocessing step. 
-Otherwise, to perform clr transformation, prepare the inputs mentioned above and run the below command :
-```
-python3 clr_transformation.py
-```
-
 ## Generating the imputed values for missing samples
-Run the below command to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed in **"run_DeepMicroGen.sh"** file.
+Prepare the above two inputs in the **DeepMicroGen** directory and run the below command to generate the imputed values for missing samples. You can modify the learning rate, dropout rate, and epochs for training by modifying the options listed in **"run_DeepMicroGen.sh"** file.
 ```
 ./run_DeepMicroGen.sh
 ```
