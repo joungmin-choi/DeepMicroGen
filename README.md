@@ -81,7 +81,7 @@ After running, you will get two result outputs :
 You can find the description for the other files below:
 * diabimmune_allergy_metadata_original.csv, diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects used for the classifier trained with/without the 25 imputed subjects, respectively.
 * diabimmune_allergy_original_clr.csv, diabimmune_allergy_imputed_clr.csv : Clr-transformed dataset with/wihtout the addition of the imputed subjects
-* 5cv_dataet : 5-fold cross validation dataset
+* 5cv_dataet : 5-fold cross validation dataset based on the above two csv files. \*_X.csv refers to the abundance profile, and \*_Y.csv refers to the label information for the allergy. 
 
 ## Contact
 If you have any questions or problems, please contact to **joungmin AT vt.edu**.
