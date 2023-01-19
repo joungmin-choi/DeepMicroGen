@@ -6,7 +6,7 @@ DeepMicroGen is a deep generative method for longitudinal microbiome data imputa
 ## Requirements
 * Tensorflow (>= 1.8.0)
 * Python (>= 2.7)
-* Python packages : numpy, pandas, os, sys
+* Python packages : numpy, pandas, os, sys, scikit-learn
 
 ### Installation
 To install the above requirments, please run below commands in the terminal :
@@ -14,6 +14,7 @@ To install the above requirments, please run below commands in the terminal :
 pip install tensorflow==1.8.0 # For CPU
 pip install tensorflow-gpu==1.8.0 # For GPU
 pip install numpy pandas os sys
+pip install -U scikit-learn
 ```
 
 ## Usage
@@ -62,6 +63,7 @@ Prepare the above two inputs in the **DeepMicroGen** directory and run the below
 ```
 
 After training, you will get two final imputation outputs:  
+
 **1) imputed_dataset_from_DeepMicroGen.csv** (clr-transformed format)  
 **2) imputed_dataset_from_DeepMicroGen_scaled.csv** (relative abundance profiles where the sum of the abundance values in all OTUs equals to 1).
 
@@ -74,14 +76,11 @@ To re-run the allergy classification experiment in Section 3.6 of the manuscript
 ```
 
 After running, you will get two result outputs : 
-**1) average_classification_auc_result_original.csv** : Average auc results for the allerge outcome predictions of the classifier trained without the imputed subjects, perforing 5-fold cross validation
-**2) average_classification_auc_result_imputed.csv** : Average auc results based on the classifier trained with the addition of the 25 imputed subjects
+**1) average_classification_auc_result_original.csv**, and **2) average_classification_auc_result_imputed.csv**, which are average auc results for the allerge outcome predictions of the classifier trained with/without the addition of 25 imputed subjects, perforing 5-fold cross validation, respecitvely.
 
 You can find the description for the other files below:
-* diabimmune_allergy_metadata_original.csv : Metadata (allergy information) for the subjects used for the classifier trained without the imputed subjects
-* diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects including the 25 imputed subjects
-* diabimmune_allergy_original_clr.csv : Clr-transformed dataset wihtout the imputed subjects
-* diabimmune_allergy_imputed_clr.csv : Clr-transformed dataset wiht the addition of the imputed subjects
+* diabimmune_allergy_metadata_original.csv, diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects used for the classifier trained with/without the 25 imputed subjects, respectively.
+* diabimmune_allergy_original_clr.csv, diabimmune_allergy_imputed_clr.csv : Clr-transformed dataset with/wihtout the addition of the imputed subjects
 * 5cv_dataet : 5-fold cross validation dataset
 
 ## Contact
