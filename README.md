@@ -66,7 +66,23 @@ After training, you will get two final imputation outputs:
 **2) imputed_dataset_from_DeepMicroGen_scaled.csv** (relative abundance profiles where the sum of the abundance values in all OTUs equals to 1).
 
 ## Allergy classification ##
-We uploaded the orginial clr-transformed species-level relative abundance profiles for DIABIMMUNE dataset and the imputation output from DeepMicroGen used for allergy prediction improvement in **"allergy_classification"** directory. For each subject, the profiles measured for 8 timepoints are aligned. The lstm-based allergy classifier used to predict the allergy in the expereiment was also uploaded.
+We uploaded the orginial clr-transformed species-level relative abundance profiles for DIABIMMUNE dataset and the imputation output from DeepMicroGen used for allergy prediction improvement in **"allergy_classification"** directory. For each subject, the profiles measured for 8 timepoints are aligned. The lstm-based allergy classifier used to predict the allergy in the expereiment was also uploaded. 
+
+To re-run the allergy classification experiment in Section 3.6 of the manuscript, move to the **"allergy_classification"** directory and run the below command :
+```
+./run_allergy_classifier.sh
+```
+
+After running, you will get two result outputs : 
+**1) average_classification_auc_result_original.csv** : Average auc results for the allerge outcome predictions of the classifier trained without the imputed subjects, perforing 5-fold cross validation
+**2) average_classification_auc_result_imputed.csv** : Average auc results based on the classifier trained with the addition of the 25 imputed subjects
+
+You can find the description for the other files below:
+* diabimmune_allergy_metadata_original.csv : Metadata (allergy information) for the subjects used for the classifier trained without the imputed subjects
+* diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects including the 25 imputed subjects
+* diabimmune_allergy_original_clr.csv : Clr-transformed dataset wihtout the imputed subjects
+* diabimmune_allergy_imputed_clr.csv : Clr-transformed dataset wiht the addition of the imputed subjects
+* 5cv_dataet : 5-fold cross validation dataset
 
 ## Contact
 If you have any questions or problems, please contact to **joungmin AT vt.edu**.
