@@ -35,7 +35,7 @@ y_data = pd.read_csv(y_data_file)
 x_test = pd.read_csv(x_test_file)
 y_test = pd.read_csv(y_test_file)
 
-num_timepoint = 8 #len(x[0])
+num_timepoint = 8 
 num_feature = len(x_data.columns)
 x_data = x_data.values
 x_data = x_data.reshape(-1, num_timepoint, num_feature)
@@ -54,7 +54,7 @@ phase = tf.placeholder(tf.bool, name='phase')
 def build_discriminator(X, _phase, _keep_prob) :
 	bilstm = tf.keras.layers.Bidirectional(tf.keras.layers.SimpleRNN(32), merge_mode = 'concat')(X)
 	fc1 = tf.nn.dropout(tf.nn.leaky_relu(fc_bn(bilstm, 16, _phase, "discriminator_fc1")), _keep_prob)
-	logits = fc_bn(fc1, 1, _phase, "logits")
+	logits = fc_bn(fc1, 2, _phase, "logits")
 	predicted_value = tf.nn.softmax(logits)
 	return predicted_value, logits 
 
@@ -82,12 +82,12 @@ with tf.Session() as sess:
 		_, d_loss_print, d_acc = sess.run([d_train_step, d_loss, accuracy], feed_dict={tf_X: x_data, tf_Y: y_data, phase : True, keep_prob: dp_rate})
 		if i % 10 == 0:
 			test_acc, test_pred, test_label = sess.run([accuracy, pred, label], feed_dict={tf_X: x_test, tf_Y: y_test, phase : False, keep_prob: 1.0})
-			print('Epoch: %d, cost: %f, train_acc:%.4f, test_acc: %.4f' % (i, d_loss_print, d_acc, test_acc))
+			print('Epoch: %d, cost: %f, train_acc:%.4f' % (i, d_loss_print, d_acc))
 			if test_acc > max_acc :
 				max_acc = test_acc
 				max_pred = test_pred
 				max_label = test_label
-	np.savetxt("prediction_group_" + group + "_" + allergy + "_acc_" + str(max_acc) + ".csv",  max_pred, fmt="%.0f", delimiter=",")
-	np.savetxt("label_group_" + group + "_" + allergy + "_acc_" + str(max_acc) + ".csv",  max_label, fmt="%.0f", delimiter=",")
+	np.savetxt("prediction_group_" + group + "_" + allergy + ".csv",  max_pred, fmt="%.0f", delimiter=",")
+	np.savetxt("label_group_" + group + "_" + allergy + ".csv",  max_label, fmt="%.0f", delimiter=",")
 
 				
