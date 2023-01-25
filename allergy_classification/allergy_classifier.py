@@ -83,11 +83,7 @@ with tf.Session() as sess:
 		if i % 10 == 0:
 			test_acc, test_pred, test_label = sess.run([accuracy, pred, label], feed_dict={tf_X: x_test, tf_Y: y_test, phase : False, keep_prob: 1.0})
 			print('Epoch: %d, cost: %f, train_acc:%.4f' % (i, d_loss_print, d_acc))
-			if test_acc > max_acc :
-				max_acc = test_acc
-				max_pred = test_pred
-				max_label = test_label
-	np.savetxt("prediction_group_" + group + "_" + allergy + ".csv",  max_pred, fmt="%.0f", delimiter=",")
-	np.savetxt("label_group_" + group + "_" + allergy + ".csv",  max_label, fmt="%.0f", delimiter=",")
+	np.savetxt("prediction_group_" + group + "_" + allergy + ".csv",  test_pred, fmt="%.0f", delimiter=",")
+	np.savetxt("label_group_" + group + "_" + allergy + ".csv",  test_label, fmt="%.0f", delimiter=",")
 
 				
