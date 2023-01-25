@@ -15,5 +15,5 @@ for data_type in data_type_list :
 			label = pd.read_csv(label_file, header = None)
 			pred = pd.read_csv(pred_file, header = None)
 			result_list.append(roc_auc_score(label, pred))
-		result_df[allergy] = [np.mean(result_list)]
-	result_df.to_csv("average_classification_auc_result" + data_type + ".csv", mode = "w", index = False)
+		result_df[allergy] = result_list
+	result_df.to_csv("classification_auc_result" + data_type + ".csv", mode = "w", index = False)
