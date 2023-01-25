@@ -76,7 +76,7 @@ To re-run the allergy classification experiment in Section 3.6 of the manuscript
 ```
 
 After running, you will get two result outputs : 
-**1) average_classification_auc_result_original.csv**, and **2) average_classification_auc_result_imputed.csv**, which are average auc results for the allerge outcome predictions of the classifier trained with/without the addition of 25 imputed subjects, perforing 5-fold cross validation, respecitvely.
+1) classification_auc_result_original.csv, and 2) classification_auc_result_imputed.csv, which are the auc results for the allerge outcome predictions of the classifier trained with/without the addition of 25 imputed subjects, perforing 5-fold cross validation, respecitvely.
 
 You can find the description for the other files below:
 * diabimmune_allergy_metadata_original.csv, diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects used for the classifier trained with/without the 25 imputed subjects, respectively.
