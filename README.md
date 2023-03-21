@@ -68,15 +68,19 @@ After training, you will get two final imputation outputs:
 **2) imputed_dataset_from_DeepMicroGen_scaled.csv** (relative abundance profiles where the sum of the abundance values in all OTUs equals to 1).
 
 ## Allergy classification ##
-We uploaded the orginial clr-transformed species-level relative abundance profiles for DIABIMMUNE dataset and the imputation output from DeepMicroGen used for allergy prediction improvement in **"allergy_classification"** directory. For each subject, the profiles measured for 8 timepoints are aligned. The lstm-based allergy classifier used to predict the allergy in the expereiment was also uploaded. 
+We uploaded the orginial clr-transformed species-level relative abundance profiles for DIABIMMUNE dataset and the imputation output from DeepMicroGen and other baseline imputation methods used for allergy prediction improvement experiment in **"allergy_classification"** directory. For each subject, the profiles measured for 8 timepoints are aligned. The lstm-based allergy classifier used to predict the allergy in the expereiment was also uploaded. 
 
 To re-run the allergy classification experiment in Section 3.6 of the manuscript, move to the **"allergy_classification"** directory and run the below command :
 ```
 ./run_allergy_classifier.sh
 ```
 
-After running, you will get two result outputs : 
-* "classification_auc_result_original.csv" and "classification_auc_result_imputed.csv", which are the auc results for the allerge outcome predictions of the classifier trained with/without the addition of 25 imputed subjects, perforing 5-fold cross validation, respecitvely.
+The default setting is to run the classifiers with the imputation output from DeepMicroGen. If you want to test the imputed output from other baseline method, modify the **"run_allergy_classifier.sh"** file following the description in it, and rerun the same command.
+
+We also provided the IPython notebook for the user to follow and run our experiment for each allergy classification in **"allergy_classification_experiment.ipynb"** file in the **"allergy_classification"** directory. 
+
+After running, you will get the below outputs : 
+* **"results_allergyType_original.csv"** and **"results_allergyType_imputed.csv"**, which are the auc results for the allerge outcome predictions of the classifier trained with/without the addition of 25 imputed subjects, repeating 5-fold cross validation experiment five times, respecitvely. The last row of each file shows the average AUC for each experiment.
 
 You can find the description for the other files below:
 * diabimmune_allergy_metadata_original.csv, diabimmune_allergy_metadata_imputed.csv : Metadata (allergy information) for the subjects used for the classifier trained with/without the 25 imputed subjects, respectively.
