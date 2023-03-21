@@ -1,7 +1,17 @@
 #!/bin/bash
 
-# Change dir as the dataset you want to run
+###################################################
+### Change "dir" as the dataset you want to run ###
+###################################################
+
 dir="./5cv_dataset/DeepMicroGen/"
+#dir="./5cv_dataset/mean/"                          # mean imputation
+#dir="./5cv_dataset/median/"                        # median imputation
+#dir="./5cv_dataset/mice/"                          # MICE imputation
+#dir="./5cv_dataset/moving_window/"                 # moving window-based imputation
+#dir="./5cv_dataset/locf/"                          # Last observation carried forward imputation
+#dir="./5cv_dataset/linear_curve_fitting/"          # Linear curve fitting
+#dir="./5cv_dataset/cubic_curve_fitting/"           # Cubic curve fitting
 
 for j in {1..5}
 do
