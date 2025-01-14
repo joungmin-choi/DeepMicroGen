@@ -9,6 +9,6 @@ dropout_rate="0.7"
 epochs="3000"
 
 pseudo_count=$(python clr_transformation.py $input_profile_RA)
-python convert_input.py $input_profile
+python convert_input.py $input_profile_clr
 python deepMicroGen.py "input_abundance_profiles.csv" $input_mask $learning_rate $dropout_rate $epochs $pseudo_count
 
