@@ -15,6 +15,7 @@ pip install tensorflow==1.8.0 # For CPU
 pip install tensorflow-gpu==1.8.0 # For GPU
 pip install numpy pandas os sys
 pip install -U scikit-learn
+pip install scikit-bio
 ```
 
 ## Usage
